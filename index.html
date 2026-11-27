@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BIGIL SUPER LEAGUE S3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><div class="brand">BIGIL <span>SUPER LEAGUE</span></div><small>SEASON 3 · MEGA AUCTION</small></header>
+  <main>
+    <section id="login" class="panel">
+      <h1>Owner / Admin Login</h1>
+      <p>Sign in with the account created by the league admin.</p>
+      <input id="email" type="email" placeholder="Email address">
+      <input id="password" type="password" placeholder="Password">
+      <button id="loginBtn">LOGIN</button>
+      <p id="loginMsg" class="msg"></p>
+    </section>
+    <section id="app" hidden>
+      <div class="topline"><span id="who"></span><button id="logoutBtn" class="secondary">LOGOUT</button></div>
+      <section class="panel">
+        <h2>Team purse & squad</h2><div id="teams" class="teamgrid"></div>
+      </section>
+      <section class="panel" id="adminPanel" hidden>
+        <h2>Admin controls</h2>
+        <label>Player name<input id="playerName" placeholder="Player name"></label>
+        <label>Role<select id="playerRole"><option>Batter</option><option>Bowler</option><option>All-rounder</option><option>Wicketkeeper</option></select></label>
+        <label>Base price (₹ Cr)<input id="basePrice" type="number" min="0.2" step="0.1" value="0.5"></label>
+        <button id="addPlayerBtn">ADD PLAYER TO AUCTION</button>
+        <hr>
+        <label>Retention team<select id="retTeam"></select></label>
+        <label>Retention order<select id="retOrder"><option value="1">1st – ₹18 Cr</option><option value="2">2nd – ₹12 Cr</option><option value="3">3rd – ₹8 Cr</option><option value="4">4th – ₹8 Cr</option></select></label>
+        <label>Retained player name<input id="retPlayer" placeholder="Player name"></label>
+        <button id="retainBtn">SAVE RETENTION</button>
+        <p class="hint">Retention entry is a manual record in this starter build. Add the retained player to the squad list separately during setup.</p>
+      </section>
+      <section class="panel">
+        <h2>Live auction room</h2>
+        <div id="currentPlayer" class="current">No player is currently up for auction.</div>
+        <div class="bidrow"><strong id="bidAmount">₹0.00 Cr</strong><span id="bidTeam">No bids yet</span></div>
+        <button id="bidBtn">PLACE NEXT BID</button>
+        <div id="adminAuction" hidden class="admin-actions">
+          <button id="nextBtn" class="secondary">NEXT PLAYER</button>
+          <button id="soldBtn">MARK SOLD</button>
+          <button id="unsoldBtn" class="secondary">MARK UNSOLD</button>
+        </div>
+        <p id="auctionMsg" class="msg"></p>
+      </section>
+      <section class="panel"><h2>Available players</h2><div id="players"></div></section>
+    </section>
+  </main>
+  <footer>BIGIL SUPER LEAGUE · S3</footer>
+  <script type="module" src="app.js"></script>
+</body></html>

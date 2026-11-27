@@ -1,0 +1,26 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": false,
+    "owners": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || auth.uid === 'REPLACE_ADMIN_UID')",
+        ".write": "auth != null && auth.uid === 'REPLACE_ADMIN_UID'"
+      }
+    },
+    "teams": {
+      ".read": "auth != null",
+      "$team": {
+        ".write": "auth != null && auth.uid === 'REPLACE_ADMIN_UID'"
+      }
+    },
+    "players": {
+      ".read": "auth != null",
+      ".write": "auth != null && auth.uid === 'REPLACE_ADMIN_UID'"
+    },
+    "auction": {
+      ".read": "auth != null",
+      ".write": "auth != null && (auth.uid === 'REPLACE_ADMIN_UID' || (root.child('owners').child(auth.uid).child('teamId').val() === newData.child('currentTeamId').val() && newData.child('currentBid').val() > data.child('currentBid').val()))"
+    }
+  }
+}
